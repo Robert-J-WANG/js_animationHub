@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Speedometer Circle Progress</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+  <div class="card">
+    <div class="rating">
+      <h2><span class="counter" data-target="90">0</span><sup>%</sup><br>HTML</h2>
+      <div class="block"></div>
+    </div>
+  </div>
+  <script>
+    const rating = document.querySelector('.rating');
+    const blocks = document.querySelectorAll('.block');
+    for (let i = 1; i < 50; i++) {
+      rating.innerHTML += '<div class="block"></div>';
+      const blocks = document.querySelectorAll('.block');
+      blocks[i].style.transform = `rotate(${7.2 * (i + 1)}deg)`;
+      blocks[i].style.animationDelay = `${i / 50}s`;
+    }
+  
+    const counter = document.querySelector('.counter');
+    const target = +counter.dataset.target;
+    let value = 0; // Start from 0, not the initial content of the counter
+  
+    const numberCounter = () => {
+      if (value < target) {
+        value++;
+        counter.innerHTML = value;
+        setTimeout(numberCounter, 10);
+      }
+    };
+    // Call the numberCounter function to start counting
+    numberCounter();
+  </script>
+  
+</body>
+</html>
