@@ -45,7 +45,7 @@ body .card .rating .block {
     opacity: 1;
   }
 }
-body .card .rating .block:nth-child(-n+46) {
+body .card .rating .highlighted {
   background: hotpink;
   box-shadow: 0 0 15px hotpink, 0 0 30px hotpink;
 }/*# sourceMappingURL=index.css.map */
