@@ -1,17 +1,57 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
   <link href="public/style.css" rel="stylesheet">
 </head>
-<body>
-  <button class="btn btn-info">Info</button>
-  <button class="btn btn-success">Success</button>
-  <button class="btn btn-warning">Warning</button>
-  <button class="btn btn-error">Error</button>
-  <h1 class="table-cell w-screen h-screen text-3xl font-bold text-center text-red-700 underline align-middle">
-    Hello zzxworld!
-  </h1>
+
+<body background="./src/assets/bg-pattern.png">
+  <ul class="flex flex-col w-[500px] h-[100vh] text-2xl bg-base-200 menu rounded-box fixed top-0 left-10">
+    <h2 class="my-4 text-3xl text-center">My Animation Hub</h2>
+    <!-- <li class="w-full"><a data-href="section1">Item 1</a></li> -->
+  </ul>
+
+  <nav class="flex flex-col w-[calc(100vw-560px)] items-center justify-center  absolute right-0 top-0 px-10 ">
+    <!-- <div class="h-[calc(100vh-80px)] w-full rounded-3xl bg-neutral-300 m-10 flex items-center justify-center overflow-hidden"
+      id="section1"><iframe class="w-full h-full" src="./src/01_Speedometer Circle Progress/index.html" frameborder="0"></iframe></div> -->
+  </nav>
+
+  <script>
+    const data = [
+      { id: 1, title: '01 Speedometer Circle Progress', content: '01_Speedometer Circle Progress', href: 'section1' },
+      { id: 2, title: '02 My Clock', content: '02_My Clock', href: 'section2' },
+      { id: 3, title: '03 Christmas Countdown', content: '03_Christmas Countdown', href: 'section3' },
+     
+    ]
+    // 渲染导航页
+    const ul = document.querySelector('ul')
+    const htmlStr = data.map((item) => {
+      return (`<li class="w-full"><a class="anchor" data-href=${item.href}>${item.title}</a></li>`)
+    }).join('')
+    ul.innerHTML += htmlStr
+
+    // 导航页点击事件
+    ul.addEventListener('click', (e) => {
+      if (e.target.classList.contains('anchor')) {
+        const href = e.target.dataset.href
+        document.querySelector('#' + href).scrollIntoView(true)
+      }
+    })
+    // 渲染内容页面
+    const contentHtmlStr=data.map((item) => {
+      return (`
+      <div class="h-[calc(100vh-80px)] w-full rounded-3xl bg-neutral-300 m-10 flex items-center justify-center overflow-hidden"
+      id=${item.href}>
+        <iframe class="w-full h-full" src="./src/${item.content}/index.html" frameborder="0"></iframe>
+      </div>
+      `)
+    }).join('')
+    document.querySelector('nav').innerHTML = contentHtmlStr
+    
+  </script>
 </body>
+
 </html>
