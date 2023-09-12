@@ -15,15 +15,15 @@
       <div class="block"></div>
     </div>
   </div> -->
-  
+
   <script>
-    const data=[
-      {id:1, target: '70', title:'HTML',highlightColor:'deeppink'},
-      {id:2, target: '50', title:'CSS',highlightColor:'deepblue'},
-      {id:3, target: '40', title:'JAVASCRIPT',highlightColor:'darkorange'},
+    const data = [
+      { id: 1, target: '70', title: 'HTML', highlightColor: 'deeppink' },
+      { id: 2, target: '50', title: 'CSS', highlightColor: 'deepblue' },
+      { id: 3, target: '40', title: 'JAVASCRIPT', highlightColor: 'darkorange' },
     ]
     // 动态渲染card
-    const htmlStr=data.map(item=>{
+    const htmlStr = data.map(item => {
       return `
       <div class="card" data-highlightColor=${item.highlightColor}>
         <div class="rating">
@@ -75,7 +75,7 @@
     initializeRating('.card:nth-child(1)', 70, 'deeppink'); 
     initializeRating('.card:nth-child(2)', 50, 'limegreen'); 
     initializeRating('.card:nth-child(3)', 80, 'darkorange'); 
+    
   </script>
 </body>
-
 </html>
