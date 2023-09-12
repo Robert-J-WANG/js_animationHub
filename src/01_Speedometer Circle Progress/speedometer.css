@@ -32,7 +32,7 @@ body .card .rating h2 {
 body .card .rating .block {
   position: absolute;
   left: 50%;
-  width: 2px;
+  width: 4px;
   height: 15px;
   background: #736f6f;
   transform: rotate(7.2deg);
@@ -46,6 +46,6 @@ body .card .rating .block {
   }
 }
 body .card .rating .highlighted {
-  background: hotpink;
-  box-shadow: 0 0 15px hotpink, 0 0 30px hotpink;
-}/*# sourceMappingURL=index.css.map */
+  background: deeppink;
+  box-shadow: 0 0 15px deeppink, 0 0 30px deeppink;
+}/*# sourceMappingURL=speedometer.css.map */
