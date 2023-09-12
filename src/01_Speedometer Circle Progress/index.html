@@ -9,46 +9,73 @@
 </head>
 
 <body>
-  <div class="card">
+  <!-- <div class="card">
     <div class="rating">
       <h2><span class="counter" data-target="70">0</span><sup>%</sup><br>HTML</h2>
       <div class="block"></div>
     </div>
-  </div>
+  </div> -->
   
   <script>
-    const rating = document.querySelector('.rating');
-    const counter = document.querySelector('.counter');
-    const target = +counter.dataset.target;
+    const data=[
+      {id:1, target: '70', title:'HTML',highlightColor:'deeppink'},
+      {id:2, target: '50', title:'CSS',highlightColor:'deepblue'},
+      {id:3, target: '40', title:'JAVASCRIPT',highlightColor:'darkorange'},
+    ]
+    // 动态渲染card
+    const htmlStr=data.map(item=>{
+      return `
+      <div class="card" data-highlightColor=${item.highlightColor}>
+        <div class="rating">
+          <h2><span class="counter" data-target=${item.target}>0</span><sup>%</sup><br>${item.title}</h2>
+          <div class="block"></div>
+        </div>
+      </div>
+      `
+    }).join('');
+    // console.log(htmlStr)
+    document.body.innerHTML = htmlStr
 
-    // 计算要高亮的块数
-    const highlightedBlocks = Math.floor((target / 100) * 50);
+    // 封装函数来处理每个 card
+    function initializeRating(cardSelector, targetPercentage, highlightColor) {
+      const rating = document.querySelector(cardSelector + ' .rating');
+      const counter = document.querySelector(cardSelector + ' .counter');
+      const target = +counter.dataset.target;
 
-    for (let i = 1; i < 50; i++) {
-      const block = document.createElement('div');
-      block.className = 'block';
-      block.style.transform = `rotate(${7.2 * (i + 1)}deg)`;
-      block.style.animationDelay = `${i / 50}s`;
+      // 计算要高亮的块数
+      const highlightedBlocks = Math.floor((targetPercentage / 100) * 50);
 
-      // 动态设置高亮块的样式
-      if (i <= highlightedBlocks) {
-        block.classList.add('highlighted');
+      for (let i = 1; i < 50; i++) {
+        const block = document.createElement('div');
+        block.className = 'block';
+        block.style.transform = `rotate(${7.2 * (i + 1)}deg)`;
+        block.style.animationDelay = `${i / 50}s`;
+
+        // 动态设置高亮块的样式，包括颜色
+        if (i <= highlightedBlocks) {
+          block.style.background = highlightColor;
+          block.style.boxShadow = `0 0 15px ${highlightColor}, 0 0 30px ${highlightColor}`;
+        }
+        rating.appendChild(block);
       }
-      rating.appendChild(block)
+
+      let currentValue = 0;
+      const numberCounter = () => {
+        if (currentValue < targetPercentage) {
+          currentValue++;
+          counter.innerHTML = currentValue;
+          setTimeout(numberCounter, 10);
+        }
+      };
+      // 调用 numberCounter 函数开始计数
+      numberCounter();
     }
 
-    let currentValue = 0
-    const numberCounter = () => {
-      if (currentValue < target) {
-        currentValue++;
-        counter.innerHTML = currentValue ;
-        setTimeout(numberCounter, 10);
-      }
-    };
-    // 调用numberCounter函数开始计数
-    numberCounter();
+    // 调用函数初始化每个 card，并传递不同的颜色参数
+    initializeRating('.card:nth-child(1)', 70, 'deeppink'); 
+    initializeRating('.card:nth-child(2)', 50, 'limegreen'); 
+    initializeRating('.card:nth-child(3)', 80, 'darkorange'); 
   </script>
-
 </body>
 
 </html>

@@ -15,6 +15,7 @@ body .card {
   position: relative;
   width: 200px;
   height: 200px;
+  margin: 20px;
 }
 body .card .rating {
   position: relative;
@@ -44,8 +45,4 @@ body .card .rating .block {
   to {
     opacity: 1;
   }
-}
-body .card .rating .highlighted {
-  background: deeppink;
-  box-shadow: 0 0 15px deeppink, 0 0 30px deeppink;
 }/*# sourceMappingURL=speedometer.css.map */
