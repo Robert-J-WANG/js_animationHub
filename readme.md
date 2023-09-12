@@ -86,7 +86,7 @@ npm i -D daisyui@latest
 
 #### Step 2：将daisyUI引入到tailwind.css中。 打开已经创建的tailwind.config.js配置文件，添加daisyU到插件列表中
 
-```json
+```javascript
 module.exports = {
   //...
   plugins: [require("daisyui")],
